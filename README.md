@@ -116,7 +116,7 @@ If you use this code in your research, please cite:
 
 ## License
 
-See the LICENSE file for details.
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.en)
 
 ## Contact
 
