@@ -114,8 +114,6 @@ class MatchInfo:
     match_delta: Optional[int] = None               # Difference: match_with_explanation - match_without_explanation.
 
 
-
-
 @dataclass
 class FaithfulnessRecord:
     """

@@ -1,0 +1,55 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug: tabular_to_text",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.counterfactual_generation.tabular_counterfactual_generation.tabular_to_text",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug: heart_disease template",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.templates.heart_disease",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug: generate_predictor_answers",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "src.prediction_generation.generate_predictor_answers",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "env": {
+        "CUDA_VISIBLE_DEVICES": "3"
+      },
+      "args": [
+        "tabular_results/heart_disease_counterfactual_dataset_balanced.parquet",
+        "--output-parquet","tabular_results/heart_disease_predictions.parquet",
+        "--model","Qwen/Qwen3-8B",
+        "--batch-size","10000"
+      ]
+    },
+    {
+  "name": "Debug: generate_reference_answers (heart_disease)",
+  "type": "debugpy",
+  "request": "launch",
+  "module": "src.reference_answer_generation.generate_reference_answers",
+  "cwd": "${workspaceFolder}",
+  "console": "integratedTerminal",
+  "env": {
+    "CUDA_VISIBLE_DEVICES": "3"
+  },
+  "args": [
+    "tabular_results/heart_disease_counterfactual_dataset_balanced.parquet",
+    "--output-parquet", "tabular_results/breast_cancer_recurrence_reference.parquet",
+    "--model", "Qwen/Qwen3-8B",
+    "--batch-size", "10000"
+  ]
+}
+  ]
+}
