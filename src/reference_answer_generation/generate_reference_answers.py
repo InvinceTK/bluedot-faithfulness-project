@@ -26,7 +26,6 @@ from src.vllm_configs import VLLM_CONFIGS
 import argparse
 from pathlib import Path
 
-
 async def generate_reference_answers(
     input_parquet_path: str,
     output_parquet_path: str,
@@ -89,6 +88,8 @@ async def generate_reference_answers(
     print()
     
     # Create generator (it will initialize the LLM automatically)
+
+    # 
     generator = ReferenceAnswerGenerator(config)
     await generator.process_parquet(input_path=input_parquet_path, output_path=output_parquet_path, max_batch_size=batch_size)
     

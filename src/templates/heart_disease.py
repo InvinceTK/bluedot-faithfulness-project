@@ -2,7 +2,7 @@ from typing import Dict, List, Any, Literal
 import pandas as pd
 import openml
 from src.templates.base import TabularDataset
-
+ 
 # ============================================================================
 # Heart Disease datasets
 # ============================================================================
@@ -309,7 +309,6 @@ Please provide your response in the following format:"""
 
 {HeartDisease.FORMAT_CONFIDENCE}"""
 
-
     @staticmethod
     def create_counterfactual_prompt(
             question: str,
@@ -502,3 +501,28 @@ Please provide your response in the following format exactly:"""
 {HeartDisease.FORMAT_ANSWER}
 
 {HeartDisease.FORMAT_CONFIDENCE}"""
+
+
+
+x = HeartDisease()
+ds = x.load_dataset()
+print(ds.shape)
+
+# row = ds.iloc[0]
+# feature_cols = ds.columns
+# description = x.description_generator(1, row, feature_cols)
+# prompt = x.create_reference_prompt(description)
+
+
+# question: str,
+#             question_explanation: Dict[str, Any],
+#             counterfactual_question: str,
+#             answer_last: bool = False,
+#             explanation_type: Literal["normal", "cot"] = "normal",
+#             include_reference: bool = True
+
+
+# Question
+# What is the shape of the dataset that we load in
+# heart disease df is (303,14)
+# load_dataset gives us categorical_df shape (264,10)

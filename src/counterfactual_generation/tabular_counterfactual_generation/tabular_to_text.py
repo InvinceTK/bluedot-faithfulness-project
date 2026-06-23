@@ -40,12 +40,14 @@ def convert_to_text(dataset, answer_first_only: bool = False, output_dir: str = 
     print("\n" + "="*60)
     print("METHOD: REPEATED HAMMING BALLS (ONE PER DATA POINT)")
     print("="*60)
+
     groups = converter.find_hamming_balls_repeated(
         max_distance=2,
         min_group_size=5,
         max_group_size=10,
         epsilon=0.3
     )
+
     if groups:
         # Special handling for Income and Bank Marketing datasets: Sub-sample to 500 groups (center points)
         if dataset.to_string() in ["income", "bank_marketing"] and len(groups) > 500:
@@ -83,11 +85,13 @@ def main():
     parser = argparse.ArgumentParser(
         description="Convert tabular datasets to text-based counterfactual datasets"
     )
+
     parser.add_argument(
         "--answer-first-only",
         action="store_true",
         help="Only generate answer_first=True versions (better parsing success)"
     )
+
     parser.add_argument(
         "--output_dir",
         type=str,
@@ -124,3 +128,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# We start of with heart disease dataset
+# heart disease df is shape (264,10)

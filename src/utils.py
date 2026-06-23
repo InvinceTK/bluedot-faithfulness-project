@@ -222,7 +222,6 @@ def parse_response(response: str, valid_answers: set) -> Optional[Dict[str, Any]
     
     return result
 
-
 def _cleanup_before_model(self):
     """Cleanup before loading a new model"""
     if ray.is_initialized():
@@ -377,8 +376,6 @@ def filter_records_by_reference_answer(
     stats['filtered_count'] = len(filtered_records)
     return filtered_records, stats
 
-
-
 async def get_message(
     prompt: str,
     system_prompt: str,
@@ -494,7 +491,6 @@ async def get_message(
                     continue 
             raise RunTimeError(f"Failed to get a valid response after {max_retries} attempts.")
 
-
 # Example of getting a list of responses to prompts with a few-shot prompt prepended
 async def get_messages(
     prompts: list[str],
@@ -581,7 +577,6 @@ def extract_messages_using_harmony(entries):
         final = ""
     return (cot, final, None, None, None)
 
-
 def create_testability_prompt(record) -> str:
     """
     Create a prompt for assessing counterfactual testability.
@@ -640,7 +635,6 @@ Given the reference model's answer and explanation for the original question, as
 Provide your assessment as a single number from 0-10 matching the rubric. Your output should not contain anything else."""
 
     return prompt
-
 
 def parse_testability_score(raw_response: str) -> Optional[float]:
     """
