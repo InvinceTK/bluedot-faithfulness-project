@@ -100,6 +100,7 @@ def build_neighbor_graph(df: pd.DataFrame, feature_cols: List[str],
     
     # Build neighbor graph
     neighbor_graph = {}
+    
     for i in range(len(df)):
         # Find all points within max_distance (including self)
         neighbors = set(np.where(distances[i] <= max_distance)[0])

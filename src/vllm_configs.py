@@ -662,8 +662,6 @@ VLLM_CONFIGS = {
         enable_reasoning="medium",
     ),
 
-
-
     ###########################################################################
 
     "openrouter/google/gemini-3-flash-preview-high": LLMConfig(

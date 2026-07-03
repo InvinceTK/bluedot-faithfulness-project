@@ -29,6 +29,7 @@ def convert_to_text(dataset, answer_first_only: bool = False, output_dir: str = 
     # load using custom dataset class.
     df = dataset.load_dataset()
     print(f"\nDataset shape: {df.shape}")
+
     converter = TabularToTextConverter(
         df, 
         target_col='target',
@@ -37,6 +38,7 @@ def convert_to_text(dataset, answer_first_only: bool = False, output_dir: str = 
         dataset_name=dataset.to_string(),
         target_formatter=dataset.format_target  # Pass the format_target method
     )
+    
     print("\n" + "="*60)
     print("METHOD: REPEATED HAMMING BALLS (ONE PER DATA POINT)")
     print("="*60)

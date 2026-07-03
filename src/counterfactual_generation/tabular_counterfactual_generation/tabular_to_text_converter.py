@@ -428,7 +428,7 @@ class TabularToTextConverter:
                 continue
             
             center_target = target_array[center_idx]
-            
+            max_distance 
             # Build a balanced subset, growing from min to max size
             subset = self._build_balanced_subset_growing(
                 center_idx, neighbors, center_target, target_array, 
@@ -460,6 +460,7 @@ class TabularToTextConverter:
                 max_distance=max_distance,
                 feature_names=varying_features
             )
+
             groups.append(group)
             
             if (len(groups) + skipped_count) % 50 == 0:
@@ -760,6 +761,7 @@ class TabularToTextConverter:
         
         # Generate both answer_first=True and answer_first=False versions (or just True if flag set)
         answer_first_values = [True] if answer_first_only else [True, False]
+
         for answer_first in answer_first_values:
             for group in self.hamming_groups:
                 reference_row = self.df.iloc[group.reference_idx]

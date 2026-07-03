@@ -504,9 +504,9 @@ Please provide your response in the following format exactly:"""
 
 
 
-x = HeartDisease()
-ds = x.load_dataset()
-print(ds.shape)
+# x = HeartDisease()
+# ds = x.load_dataset()
+# print(ds.shape)
 
 # row = ds.iloc[0]
 # feature_cols = ds.columns

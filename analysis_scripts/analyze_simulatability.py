@@ -53,7 +53,7 @@ import matplotlib.pyplot as plt
 import glob
 
 from src.schema import CounterfactualDatabase
-from human_eval_app.utils import check_predictor_consistency
+# from human_eval_app.utils import check_predictor_consistency
 
 # Module-level list to collect bootstrap diagnostics
 _bootstrap_diagnostics: List[Dict] = []

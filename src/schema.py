@@ -64,7 +64,6 @@ class OriginalQuestion:
     question_options: Optional[dict] = None             # Multiple-choice options, if applicable. Keys are A,B,C, D, values are options.
     reference_response: Optional[Response] = None       # Reference model's response to this original question (with explanation)
 
-
 @dataclass
 class CounterfactualInfo:
     generator_model: str                                # Name of the model that generated the counterfactual.
@@ -112,7 +111,6 @@ class MatchInfo:
     match_with_explanation: Optional[int] = None    # 1 if prediction (with explanation) matches reference answer, else 0.
     match_without_explanation: Optional[int] = None # 1 if prediction (without explanation) matches reference answer, else 0.
     match_delta: Optional[int] = None               # Difference: match_with_explanation - match_without_explanation.
-
 
 @dataclass
 class FaithfulnessRecord:
@@ -213,6 +211,7 @@ class CounterfactualDatabase:
             r.counterfactual.question_idx for r in self.records
             if r.counterfactual.question_idx is not None
         )
+        
         max_index = max(cf_question_indices) if cf_question_indices else 100000000
         if record.counterfactual.question_idx is None:
             record.counterfactual.question_idx = max_index + 1

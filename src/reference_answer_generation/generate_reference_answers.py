@@ -141,7 +141,13 @@ async def main():
         output_path = input_path.parent / f"{input_path.stem}_with_reference_answers.parquet"
     else:
         output_path = Path(args.output_parquet)
-    
+        
+    # check whether path
+    is_valid_path = output_path.parent.exists()
+
+    if not is_valid_path:
+        raise Exception("Sorry, directory does not exist")
+
     print("="*60)
     print("Reference Answer Generator")
     print("="*60)

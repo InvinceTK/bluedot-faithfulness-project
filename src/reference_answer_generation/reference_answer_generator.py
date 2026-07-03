@@ -265,6 +265,7 @@ class ReferenceAnswerGenerator:
         unique_prompts, prompt_to_records = self._identify_unique_prompts(db)
         cots, responses, tokens_info = await self._generate_unique_answers(unique_prompts, max_batch_size)
         self._map_answers_to_records(db, prompt_to_records, responses, cots, tokens_info)
+
         # Generate counterfactual prompts (with/without explanation)
         self._generate_counterfactual_prompts(db)
         
@@ -334,7 +335,8 @@ class ReferenceAnswerGenerator:
             all_cots.extend([r[0] for r in batch_responses])
 
             all_tokens_info.extend([(r[2], r[3], r[4]) for r in batch_responses])
-        
+
+
         print(f"✓ Generated {len(all_responses)} unique responses\n")
         
         return {key: cot for key, cot in zip(keys, all_cots)}, {key: response for key, response in zip(keys, all_responses)}, {key: tokens for key, tokens in zip(keys, all_tokens_info)}   
