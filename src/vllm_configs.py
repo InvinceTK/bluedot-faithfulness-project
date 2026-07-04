@@ -78,7 +78,7 @@ VLLM_CONFIGS = {
             "top_p": 0.95,
             "top_k": 20,
         },
-        enable_reasoning=False,
+        enable_reasoning=True,
         cot_flags=["<think>", "</think>"]
     ),
 
