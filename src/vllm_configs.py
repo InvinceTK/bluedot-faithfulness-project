@@ -55,7 +55,7 @@ VLLM_CONFIGS = {
         trust_remote_code=True,
         dtype="bfloat16",
         max_model_len=10000,
-        max_tokens=10000,
+        max_tokens=500,
         additional_params={
             "temperature": 0.6,
             "top_p": 0.95,
