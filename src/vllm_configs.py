@@ -84,7 +84,7 @@ VLLM_CONFIGS = {
 
     "Qwen/Qwen3-14B": LLMConfig(
         model_name="Qwen/Qwen3-14B",
-        tensor_parallel_size=2,
+        tensor_parallel_size=1,
         gpu_memory_utilization=0.80,
         trust_remote_code=True,
         dtype="bfloat16",
@@ -101,7 +101,7 @@ VLLM_CONFIGS = {
 
     "Qwen/Qwen3-32B": LLMConfig(
         model_name="Qwen/Qwen3-32B",
-        tensor_parallel_size=2,
+        tensor_parallel_size=1,
         gpu_memory_utilization=0.9,
         trust_remote_code=True,
         dtype="bfloat16",
