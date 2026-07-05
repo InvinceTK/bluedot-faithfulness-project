@@ -188,7 +188,6 @@ async def generate_predictor_answers(
     print("="*80)
     print(f"Results saved to: {output_parquet_path}\n")
 
-
 async def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
