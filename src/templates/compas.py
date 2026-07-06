@@ -107,7 +107,7 @@ YES or NO (you must choose only one)"""
         out['sex']      = df['sex']
         out['race']     = df['race']
         out['age_cat']  = df['age_cat']
-        out['is_recid'] = df['is_recid'].astype(int)
+        out['target'] = df['is_recid'].astype(int)
 
         original_len = len(out)
         out = out.drop_duplicates().reset_index(drop=True)

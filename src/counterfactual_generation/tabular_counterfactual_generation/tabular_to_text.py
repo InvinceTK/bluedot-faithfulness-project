@@ -15,7 +15,9 @@ from src.templates.breast_cancer_recurrence import BreastCancerRecurrence
 from src.templates.income import IncomeDataset
 from src.templates.attrition import AttritionDataset
 from src.templates.bank_marketing import BankMarketing
+from src.templates.compas import Compas
 import os
+
 import argparse
 
 def convert_to_text(dataset, answer_first_only: bool = False, output_dir: str = "tabular_results"):
@@ -116,12 +118,7 @@ def main():
         print("Filtering: answer_first=True only")
 
     datasets = [
-                HeartDisease,
-                PimaDiabetes,
-                BreastCancerRecurrence,
-                IncomeDataset,
-                AttritionDataset,
-                BankMarketing
+          Compas      
     ]
 
     # Convert dataset to text format

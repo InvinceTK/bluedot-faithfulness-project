@@ -2,3 +2,4 @@
 .env.*
 *.parquet
 !experiments/**/*.parquet
+!data/natural_counterfactuals/*
