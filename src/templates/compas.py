@@ -6,7 +6,7 @@ from src.templates.base import TabularDataset
 # ============================================================================
 # COMPAS Recidivism dataset
 # ============================================================================
-class Compas(TabularDataset):
+class CompasDataset(TabularDataset):
 
     # Valid answers for recidivism prediction
     VALID_ANSWERS = {"YES", "NO"}
