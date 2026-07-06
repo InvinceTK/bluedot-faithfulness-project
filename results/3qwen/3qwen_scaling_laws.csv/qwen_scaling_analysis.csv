@@ -1,0 +1,10 @@
+model,model_size_b,scenario,failure_rate,answer_diversity,most_common_answer,most_common_pct,dataset
+Qwen/Qwen3-0.6B,0.6,all,36.333021515434986,2,YES,37.07389897984573,qwen
+Qwen/Qwen3-0.6B,0.6,answer_first,26.19803695150115,2,YES,44.37066974595843,qwen
+Qwen/Qwen3-0.6B,0.6,answer_last,17.72683241846949,2,YES,46.593477558927994,qwen
+Qwen/Qwen3-4B,4.0,all,37.86920443335461,2,NO,32.75842111355481,qwen
+Qwen/Qwen3-4B,4.0,answer_first,23.259493670886076,2,NO,40.79401611047181,qwen
+Qwen/Qwen3-4B,4.0,answer_last,23.453975491593045,2,NO,40.58136221145626,qwen
+Qwen/Qwen3-8B,8.0,all,35.37158984007526,2,NO,36.669401148482365,qwen
+Qwen/Qwen3-8B,8.0,answer_first,21.767241379310345,2,NO,46.14942528735632,qwen
+Qwen/Qwen3-8B,8.0,answer_last,21.207386363636363,2,NO,43.80681818181818,qwen

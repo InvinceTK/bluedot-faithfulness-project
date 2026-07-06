@@ -155,7 +155,7 @@ if __name__ == "__main__":
     # Calculate simulability gain for all three datasets with answer order separation
     from pathlib import Path
 
-    base_dir = Path(__file__).parent.parent.parent / "data/natural_counterfactuals"
+    base_dir = Path(__file__).parent.parent.parent / "tabular_results/predictor_results"
     datasets = ['pima_diabetes', 'heart_disease', 'breast_cancer_recurrence']
     
     print("\n" + "="*80)

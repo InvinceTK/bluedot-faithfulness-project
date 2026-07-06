@@ -9,6 +9,8 @@ Usage:
 
 """
 
+# is specificaltly for breast_cancer, heart, diabetes and pima
+
 import argparse
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional, Set
@@ -18,7 +20,6 @@ import pandas as pd
 import numpy as np
 from src.schema import CounterfactualDatabase
 from src.utils import normalize_answer
-
 
 def get_valid_answers_for_dataset(dataset_name: str) -> Set[str]:
     """

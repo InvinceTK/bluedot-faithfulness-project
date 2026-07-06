@@ -79,8 +79,40 @@
     "CUDA_VISIBLE_DEVICES": "3"
   },
   "args": [
-    "",
-    "--output", "results/simulatability_analysis.csv"
+    "tabular_results/predictor_results",
+    "--output", "results/3qwen/3qwen_simulatability_analysis.csv",
+    "--multi-predictor",
+    "--normalized",
+  ]
+},
+{
+  "name": "Debug: analyse_model_correlation",
+  "type": "debugpy",
+  "request": "launch",
+  "module": "analysis_scripts.analyze_model_correlation",
+  "cwd": "${workspaceFolder}",
+  "console": "integratedTerminal",
+  "env": {
+    "CUDA_VISIBLE_DEVICES": "3"
+  },
+  "args": [
+    "tabular_results/predictor_results/qwen_scaling.parquet",
+    "--output-dir", "results/3qwen/3qwen_correlation_analysis.csv",
+  ]
+},
+{
+  "name": "Debug: analyse_scaling_laws",
+  "type": "debugpy",
+  "request": "launch",
+  "module": "analysis_scripts.analyze_scaling_laws",
+  "cwd": "${workspaceFolder}",
+  "console": "integratedTerminal",
+  "env": {
+    "CUDA_VISIBLE_DEVICES": "3"
+  },
+  "args": [
+    "tabular_results/predictor_results",
+    "--output", "results/3qwen/3qwen_scaling_laws.csv",
   ]
 }
 

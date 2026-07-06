@@ -1509,11 +1509,12 @@ def main():
             # Analyze full dataset
             df = analyze_simulatability(db=db)
             dfs_by_predictor[predictor_name] = df
-
+            
             # Print results
             print_results(df)
 
             # Save individual CSV
+         
             base_name = parquet_file.stem.replace('_with_predictor_answers', '')
             output_csv = parquet_file.parent / f"{base_name}_simulatability_analysis.csv"
             df.to_csv(output_csv, index=False)
@@ -1541,8 +1542,8 @@ def main():
                     print("Warning: No records remain after consistency filtering.")
 
             # Create individual plots (with optional filtered data)
-            plot_simulatability_vs_size(df, output_csv, use_normalized=args.normalized, df_filtered=df_filtered)
-            plot_precision_recall_vs_size(df, output_csv)
+            # plot_simulatability_vs_size(df, output_csv, use_normalized=args.normalized, df_filtered=df_filtered)
+            # plot_precision_recall_vs_size(df, output_csv)
 
         # Create multi-predictor comparison plot
         plot_name = "normalized_simulatability_comparison_all_predictors.png" if args.normalized else "simulatability_comparison_all_predictors.png"
