@@ -207,7 +207,7 @@ VLLM_CONFIGS = {
     "google/gemma-3-27b-it": LLMConfig(
         model_name="google/gemma-3-27b-it",
         max_tokens=max_tokens,
-        tensor_parallel_size=2, # can be run on a single GPU. Way faster to do on 2
+        tensor_parallel_size=1, # can be run on a single GPU. Way faster to do on 2
         gpu_memory_utilization=0.90,
         max_model_len=5000, # unsure how long our prompts are. Probably fine.
         dtype="bfloat16",
