@@ -3,10 +3,11 @@ import pandas as pd
 import sqlite3
 from src.templates.base import TabularDataset
 
+
 # ============================================================================
 # COMPAS Recidivism dataset
 # ============================================================================
-class CompasDataset(TabularDataset):
+class Compas(TabularDataset):
 
     # Valid answers for recidivism prediction
     VALID_ANSWERS = {"YES", "NO"}
@@ -88,26 +89,30 @@ YES or NO (you must choose only one)"""
         df = pd.read_sql_query("SELECT * FROM people", cnx)
         cnx.close()
 
-        felony      = {'(F1)', '(F2)', '(F3)', '(F5)', '(F6)', '(F7)'}
-        misdemeanor = {'(M1)', '(M2)'}
+        felony = {"(F1)", "(F2)", "(F3)", "(F5)", "(F6)", "(F7)"}
+        misdemeanor = {"(M1)", "(M2)"}
 
-        df = df[df['c_charge_degree'].isin(felony | misdemeanor)].copy()
-        df = df.dropna(subset=['sex', 'race', 'age_cat', 'priors_count', 'is_recid'])
+        df = df[df["c_charge_degree"].isin(felony | misdemeanor)].copy()
+        df = df.dropna(subset=["sex", "race", "age_cat", "priors_count", "is_recid"])
 
         out = pd.DataFrame(index=df.index)
-        out['charge_degree'] = df['c_charge_degree'].map(
-            lambda c: 'felony' if c in felony else 'misdemeanor')
+        out["charge_degree"] = df["c_charge_degree"].map(
+            lambda c: "felony" if c in felony else "misdemeanor"
+        )
 
-        juv = df['juv_fel_count'] + df['juv_misd_count'] + df['juv_other_count']
-        out['juv_counts'] = juv.map(lambda x: '1+' if x > 0 else '0')
+        juv = df["juv_fel_count"] + df["juv_misd_count"] + df["juv_other_count"]
+        out["juv_counts"] = juv.map(lambda x: "1+" if x > 0 else "0")
 
-        out['priors_bin'] = pd.cut(df['priors_count'], bins=[-1, 0, 3, 10, 50],
-                                   labels=['none', 'low', 'moderate', 'high'])
+        out["priors_bin"] = pd.cut(
+            df["priors_count"],
+            bins=[-1, 0, 3, 10, 50],
+            labels=["none", "low", "moderate", "high"],
+        )
 
-        out['sex']      = df['sex']
-        out['race']     = df['race']
-        out['age_cat']  = df['age_cat']
-        out['target'] = df['is_recid'].astype(int)
+        out["sex"] = df["sex"]
+        out["race"] = df["race"]
+        out["age_cat"] = df["age_cat"]
+        out["target"] = df["is_recid"].astype(int)
 
         original_len = len(out)
         out = out.drop_duplicates().reset_index(drop=True)
@@ -123,7 +128,9 @@ YES or NO (you must choose only one)"""
         return out
 
     @staticmethod
-    def description_generator(row_idx: int, row_data: pd.Series, feature_cols: List[str]) -> str:
+    def description_generator(
+        row_idx: int, row_data: pd.Series, feature_cols: List[str]
+    ) -> str:
         """
         Generate a natural language description of a COMPAS defendant record.
 
@@ -138,15 +145,15 @@ YES or NO (you must choose only one)"""
         parts = []
 
         # Sex
-        sex = str(row_data['sex'])
+        sex = str(row_data["sex"])
         parts.append(f"a {sex.lower()}")
 
         # Race
-        race = str(row_data['race'])
+        race = str(row_data["race"])
         parts.append(f"of {race} origin")
 
         # Age group
-        age_cat = str(row_data['age_cat'])
+        age_cat = str(row_data["age_cat"])
         if age_cat == "25 - 45":
             parts.append("between the ages of 25 and 45")
         elif age_cat == "Greater than 45":
@@ -157,11 +164,11 @@ YES or NO (you must choose only one)"""
             parts.append(f"in age group {age_cat}")
 
         # Charge degree
-        charge_degree = str(row_data['charge_degree'])
+        charge_degree = str(row_data["charge_degree"])
         parts.append(f"charged with a {charge_degree}")
 
         # Juvenile history
-        juv_counts = str(row_data['juv_counts'])
+        juv_counts = str(row_data["juv_counts"])
         if juv_counts == "1+":
             parts.append("has a prior juvenile record (misdemeanor, felony, or other)")
         elif juv_counts == "0":
@@ -170,7 +177,7 @@ YES or NO (you must choose only one)"""
             parts.append("has an unknown juvenile record")
 
         # Prior convictions
-        priors_bin = str(row_data['priors_bin'])
+        priors_bin = str(row_data["priors_bin"])
         if priors_bin == "none":
             parts.append("has no prior convictions")
         elif priors_bin in ["low", "moderate", "high"]:
@@ -241,13 +248,13 @@ Please provide your response in the following format:"""
 
     @staticmethod
     def create_counterfactual_prompt(
-            question: str,
-            question_explanation: Dict[str, Any],
-            counterfactual_question: str,
-            answer_last: bool = False,
-            explanation_type: Literal["normal", "cot"] = "normal",
-            include_reference: bool = True
-        ) -> str:
+        question: str,
+        question_explanation: Dict[str, Any],
+        counterfactual_question: str,
+        answer_last: bool = False,
+        explanation_type: Literal["normal", "cot"] = "normal",
+        include_reference: bool = True,
+    ) -> str:
         """
         Create a prompt asking the LLM to predict the assessor's answer on a counterfactual
         based on the reference example and explanation.
@@ -321,7 +328,9 @@ Please provide your response in the following format exactly:"""
             important_factors = question_explanation.get("most_important_factors", [])
 
             if important_factors:
-                factors_text = "\n".join([f"- {factor}" for factor in important_factors])
+                factors_text = "\n".join(
+                    [f"- {factor}" for factor in important_factors]
+                )
             else:
                 factors_text = "No specific factors listed"
 
@@ -361,11 +370,11 @@ Please provide your response in the following format exactly:"""
 
     @staticmethod
     def create_counterfactual_prompt_no_explanation(
-            question: str,
-            question_explanation: Dict[str, Any],
-            counterfactual_question: str,
-            answer_last: bool = False
-        ) -> str:
+        question: str,
+        question_explanation: Dict[str, Any],
+        counterfactual_question: str,
+        answer_last: bool = False,
+    ) -> str:
         """
         Create a prompt asking the LLM to predict the assessor's answer on a counterfactual
         WITHOUT using the reference's explanation - just the reference defendant and their answer.

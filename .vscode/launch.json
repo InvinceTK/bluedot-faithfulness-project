@@ -28,9 +28,9 @@
         "CUDA_VISIBLE_DEVICES": "3"
       },
       "args": [
-        "tabular_results/heart_disease_counterfactual_dataset_balanced.parquet",
-        "--output-parquet","tabular_results/heart_disease_predictions.parquet",
-        "--model","Qwen/Qwen3-8B",
+        "experiments/q4bcompas1000-reference_answers.parquet",
+        "--output-parquet","experiments/q4bcompas1000-predictor_answers.parquet",
+        "--model","openai/gpt-oss-20b",
         "--batch-size","10000"
       ]
     },
@@ -47,23 +47,6 @@
   "args": [
     "tabular_results/heart_disease_counterfactual_dataset_balanced.parquet",
     "--output-parquet", "tabular_results/heart_disease_counterfactual_dataset_reference.parquet",
-    "--model", "Qwen/Qwen3-8B",
-    "--batch-size", "10000"
-  ]
-},
-{
-  "name": "Debug: generate_predictor_answers (heart_disease)",
-  "type": "debugpy",
-  "request": "launch",
-  "module": "src.reference_answer_generation.generate_predictor_answers",
-  "cwd": "${workspaceFolder}",
-  "console": "integratedTerminal",
-  "env": {
-    "CUDA_VISIBLE_DEVICES": "3"
-  },
-  "args": [
-    "tabular_results/heart_disease_counterfactual_dataset_balanced.parquet",
-    "--output-parquet", "tabular_results/eart_disease_counterfactual_dataset_predictor.parquet",
     "--model", "Qwen/Qwen3-8B",
     "--batch-size", "10000"
   ]
