@@ -15,7 +15,7 @@ from src.templates.attrition import AttritionDataset
 from src.templates.moral_machines import MoralMachines
 from src.templates.bank_marketing import BankMarketing
 from src.templates.bbq_dataset import BBQDataset
-from src.templates.compas import CompasDataset
+from src.templates.compas import Compas
 import random
 
 @dataclass
@@ -198,7 +198,7 @@ class CounterfactualDatabase:
             'moral_machines': MoralMachines,
             'bank_marketing': BankMarketing,
             'bbq': BBQDataset,
-            'compas': CompasDataset
+            'compas': Compas,
         }
     
     def __init__(self):
