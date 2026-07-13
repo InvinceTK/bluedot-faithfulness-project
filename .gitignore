@@ -1,5 +1,7 @@
+__pycache__/
+*.pyc
+*.db
+*.parquet
+!parquet/**/*.parquet
 .env
 .env.*
-*.parquet
-!experiments/**/*.parquet
-!data/natural_counterfactuals/*
