@@ -4,7 +4,7 @@ set -euo pipefail
 
 GPU=0
 MODEL=Qwen/Qwen3-1.7B
-DATASET=zebra_logic
+DATASET="heart_disease"
 
 IN=data/natural_counterfactuals/1_heart_disease_counterfactual_dataset_balanced.parquet
 OUT=parquet/tests/heart_disease_1.parquet
