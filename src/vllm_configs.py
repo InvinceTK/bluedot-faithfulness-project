@@ -34,7 +34,7 @@ VLLM_CONFIGS = {
     "Qwen/Qwen3-1.7B": LLMConfig(
         model_name="Qwen/Qwen3-1.7B",
         tensor_parallel_size=1,
-        gpu_memory_utilization=0.9,
+        gpu_memory_utilization=0.3,
         trust_remote_code=True,
         dtype="bfloat16",
         max_model_len=10000,
@@ -51,7 +51,7 @@ VLLM_CONFIGS = {
     "Qwen/Qwen3-4B": LLMConfig(
         model_name="Qwen/Qwen3-4B",
         tensor_parallel_size=1,
-        gpu_memory_utilization=0.90,
+        gpu_memory_utilization=0.6,
         trust_remote_code=True,
         dtype="bfloat16",
         max_model_len=10000,
@@ -329,7 +329,7 @@ VLLM_CONFIGS = {
         model_name="Qwen/Qwen3-30B-A3B-Instruct-2507",
         max_tokens=max_tokens,
         tensor_parallel_size=1,
-        gpu_memory_utilization=0.70,
+        gpu_memory_utilization=0.45,
         max_model_len=3072,
         trust_remote_code=True
     ),
@@ -678,7 +678,7 @@ VLLM_CONFIGS = {
         model_name="openai/gpt-oss-20b",
         api_model=False,
         tensor_parallel_size=1,
-        gpu_memory_utilization=0.90, # fine for the 20b on 1 H100
+        gpu_memory_utilization=0.45, # fine for the 20b on 1 H100
         trust_remote_code=True,
         dtype="bfloat16",
         max_model_len=100000,
