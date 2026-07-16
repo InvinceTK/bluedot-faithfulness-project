@@ -12,3 +12,10 @@ CUDA_VISIBLE_DEVICES=$GPU python -m src.counterfactual_generation.reference_answ
     --output-parquet "$OUT" \
     --model "$MODEL" \
     --dataset-name "$DATASET"
+
+
+    CUDA_VISIBLE_DEVICES=$GPU python -m src.counterfactual_generation.reference_answer_generation.generate_reference_answers \
+    "parquet/llm_gen_experiment2/llm_gen/1.7B_combined_counterfactuals_6000.parquet" \
+    --output-parquet "$OUT" \
+    --model "$MODEL" \
+    --dataset-name "$DATASET"
