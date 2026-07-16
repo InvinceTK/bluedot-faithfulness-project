@@ -3,5 +3,6 @@ __pycache__/
 *.db
 *.parquet
 !parquet/**/*.parquet
+!data/natural_counterfactuals/*.parquet
 .env
 .env.*
