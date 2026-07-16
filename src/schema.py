@@ -16,6 +16,7 @@ from src.templates.moral_machines import MoralMachines
 from src.templates.bank_marketing import BankMarketing
 from src.templates.bbq_dataset import BBQDataset
 from src.templates.compas import Compas
+from src.templates.zebra_logic import ZebraLogicDataset
 import random
 
 @dataclass
@@ -199,6 +200,7 @@ class CounterfactualDatabase:
             'bank_marketing': BankMarketing,
             'bbq': BBQDataset,
             'compas': Compas,
+            'zebra_logic': ZebraLogicDataset,
         }
     
     def __init__(self):
